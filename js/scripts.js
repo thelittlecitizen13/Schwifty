@@ -2,10 +2,15 @@ function createTable()
 {
     var gameSize = document.getElementById("gameSize").value;
     var gameNumbers = gameSize*gameSize - 1;
-    var randomNumbersArray = generateRandomNumbersArray(gameNumbers);
-    var emptySpotIndex = getEmptySpot(randomNumbersArray);
-    randomNumbersArray[emptySpotIndex] = '';
-    console.log(isArrayPlayable(randomNumbersArray, emptySpotIndex, gameSize));
+    var randomNumbersArray;
+    var emptySpotIndex;
+    do
+    {
+        randomNumbersArray = generateRandomNumbersArray(gameNumbers);
+        emptySpotIndex = getEmptySpot(randomNumbersArray);
+        randomNumbersArray[emptySpotIndex] = '';
+    }
+    while(isArrayPlayable(randomNumbersArray, emptySpotIndex, gameSize) != true );
     generateTable(randomNumbersArray, gameSize);
 }
 
