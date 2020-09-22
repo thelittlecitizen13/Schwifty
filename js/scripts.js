@@ -5,13 +5,26 @@ var gameTimeInterval;
 
 function startNewGame()
 {
-
-    createTable();
-    checkTable();
-    resetTimer();
-    startTimer();
+    if (validateInput())
+    {
+        createTable();
+        checkTable();
+        resetTimer();
+        startTimer();
+    }
+    
 }
 
+function validateInput()
+{
+    gameSize = document.getElementById("gameSize").value;
+    if (gameSize == '' || isNaN(gameSize) || gameSize < 2)
+    {
+        alert("Wrong game size! \nplease enter a number from 2 to infinity");
+        return false;
+    }
+    return true;
+}
 
 function createTable()
 {
