@@ -202,6 +202,7 @@ function checkTable()
 
 function checkTableValues()
 {
+    validateStopwatchRun();
     var index = 1;
     var isNotCompleted = false;
     var table = document.getElementById("gameTable");
@@ -231,20 +232,30 @@ function checkTableValues()
      return !isNotCompleted;
 }
 
+function validateStopwatchRun()
+{
+    if (isWatchPaused())
+    {
+        resetTimer();
+        startTimer();
+    }
+}
+
 function gameWon()
 {
+    gameTime = getShowTime();
     pauseTimer();
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("wonModal");
     modal.style.display = "block";
 }
 
 function recordWinner()
 {
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("wonModal");
     modal.style.display = "none";
     var winnerFullName = document.getElementById("fullName").value;
     var winnerRank = document.getElementById("rank").value;
-    var gameTime = getShowTime();
+    var currentDate = generateDate();
     
     var tableRecord = document.createElement('tr');
     var tableDoc = document.createElement('td');
@@ -260,7 +271,7 @@ function recordWinner()
     tableDoc.innerHTML = gameSize;
     tableRecord.appendChild(tableDoc);
     tableDoc = document.createElement('td');
-    tableDoc.innerHTML = generateDate();
+    tableDoc.innerHTML = currentDate;
     tableRecord.appendChild(tableDoc);
     var table = document.getElementById('winnersTableRow');
     var tbody = table.getElementsByClassName("tablebody")[0];

@@ -1,5 +1,5 @@
-var startTimerButton = document.querySelector('.startTimer');
-var pauseTimerButton = document.querySelector('.pauseTimer');
+//var startTimerButton = document.querySelector('.startTimer');
+//var pauseTimerButton = document.querySelector('.pauseTimer');
 var timerDisplay = document.querySelector('.timer');
 var startTime;
 var updatedTime;
@@ -11,7 +11,7 @@ var running = 0;
 function startTimer(){
   if(!running){
     startTime = new Date().getTime();
-    tInterval = setInterval(getShowTime, 1000);
+    tInterval = setInterval(displayTime, 500);
 // change 1 to 1000 above to run script every second instead of every millisecond. one other change will be needed in the getShowTime() function below for this to work. see comment there.   
  
     paused = 0;
@@ -19,10 +19,10 @@ function startTimer(){
 timerDisplay.style.background = "gray";
     timerDisplay.style.cursor = "auto";
     timerDisplay.style.color = "white";
-    startTimerButton.classList.add('lighter');
-    pauseTimerButton.classList.remove('lighter');
-    startTimerButton.style.cursor = "auto";
-    pauseTimerButton.style.cursor = "pointer";
+    // startTimerButton.classList.add('lighter');
+    // pauseTimerButton.classList.remove('lighter');
+    // startTimerButton.style.cursor = "auto";
+    // pauseTimerButton.style.cursor = "pointer";
   }
 }
 function pauseTimer(){
@@ -36,10 +36,10 @@ function pauseTimer(){
     timerDisplay.style.background = "gray";
     timerDisplay.style.color = "#690000";
     timerDisplay.style.cursor = "pointer";
-    startTimerButton.classList.remove('lighter');
-    pauseTimerButton.classList.add('lighter');
-    startTimerButton.style.cursor = "pointer";
-    pauseTimerButton.style.cursor = "auto";
+    // startTimerButton.classList.remove('lighter');
+    // pauseTimerButton.classList.add('lighter');
+    // startTimerButton.style.cursor = "pointer";
+    // pauseTimerButton.style.cursor = "auto";
   } else {
 // if the timer was already paused, when they click pause again, start the timer again
 startTimer();
@@ -55,11 +55,18 @@ function resetTimer(){
   timerDisplay.style.background = "#A90000";
   timerDisplay.style.color = "#fff";
   timerDisplay.style.cursor = "pointer";
-  startTimerButton.classList.remove('lighter');
-  pauseTimerButton.classList.remove('lighter');
-  startTimerButton.style.cursor = "pointer";
-  pauseTimerButton.style.cursor = "auto";
+//   startTimerButton.classList.remove('lighter');
+//   pauseTimerButton.classList.remove('lighter');
+//   startTimerButton.style.cursor = "pointer";
+//   pauseTimerButton.style.cursor = "auto";
 }
+
+function displayTime()
+{
+    var stopwatchTime = getShowTime();
+    timerDisplay.innerHTML = stopwatchTime;
+}
+
 function getShowTime(){
   updatedTime = new Date().getTime();
   if (savedTime){
@@ -77,4 +84,9 @@ hours = (hours < 10) ? "0" + hours : hours;
   seconds = (seconds < 10) ? "0" + seconds : seconds;
   milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
   return hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
+}
+
+function isWatchPaused()
+{
+    return paused;
 }
