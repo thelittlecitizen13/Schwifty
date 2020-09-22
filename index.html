@@ -10,7 +10,8 @@
     </head>
     <body>
         <h1 class="text-center">Schwifty</h1>
-        <div> 
+        <br><br>
+        <div class="text-center"> 
             <label for="gameSize" class="h5">Please enter the size of the game:</label>
             <input type="text" id="gameSize" name="gameSize"><br><br>
             <input class= "btn-primary" type="submit" value="Start new game" onclick="startNewGame();">
@@ -22,8 +23,12 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <p class="winningPhrase">Congratulations! You won the game!</p>
-      <p class="winningPhrase">Please fill the information below:</p>
+        <div class="text-center">
+            <img src="images/balba.PNG" style="height:fit-content; width: fit-content;" >
+        </div>
+    
+      <p class="winningPhrase text-center h3">Congratulations! <br/> You won the game!</p>
+      <p class="winningPhrase text-center h5">Please fill the information below:</p>
       <label for="fullName">Full Name:</label>
       <input type="text" id="fullName" name="fullName" required><br>
       <label for="rank">Rank:</label>
@@ -37,7 +42,14 @@
         <div id="gameTableDiv" class="col-9"></div>
 
         <div id="timerContainer" class= "col-3"> 
-            <div class="timer h2 text-center">Waiting for you to start a new game!</div>
+            <div class="timer text-center">
+                <p class= "h2">
+                    Game Timer
+                </p>
+                <p class="h4 text-muted">
+                    Waiting for you to start a new game!
+                </p>
+            </div>
         </div>        
       </div>
       <div>

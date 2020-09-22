@@ -43,4 +43,19 @@ td {
     cursor: pointer;
   }
 
+  .winningPhrase{
+      color: rgb(2, 92, 2);
+  }
 
+  #wonModal{
+      background-image: url(../images/winning.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+  }
+
+  .balbaEgg{
+    background-image: url(../images/balba.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }

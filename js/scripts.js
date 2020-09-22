@@ -217,7 +217,7 @@ function checkTable()
 
 function checkTableValues()
 {
-    validateStopwatchRun();
+    continueGame();
     var index = 1;
     var isNotCompleted = false;
     var table = document.getElementById("gameTable");
@@ -247,11 +247,13 @@ function checkTableValues()
      return !isNotCompleted;
 }
 
-function validateStopwatchRun()
+function continueGame()
 {
     if (isWatchPaused())
     {
         resetTimer();
+        createTable();
+        checkTable();
         startTimer();
     }
 }
