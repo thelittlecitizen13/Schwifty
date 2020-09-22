@@ -16,13 +16,8 @@ function startTimer(){
  
     paused = 0;
     running = 1;
-timerDisplay.style.background = "gray";
-    timerDisplay.style.cursor = "auto";
+    timerDisplay.style.background = "gray";
     timerDisplay.style.color = "white";
-    // startTimerButton.classList.add('lighter');
-    // pauseTimerButton.classList.remove('lighter');
-    // startTimerButton.style.cursor = "auto";
-    // pauseTimerButton.style.cursor = "pointer";
   }
 }
 function pauseTimer(){
@@ -34,12 +29,7 @@ function pauseTimer(){
     paused = 1;
     running = 0;
     timerDisplay.style.background = "gray";
-    timerDisplay.style.color = "#690000";
-    timerDisplay.style.cursor = "pointer";
-    // startTimerButton.classList.remove('lighter');
-    // pauseTimerButton.classList.add('lighter');
-    // startTimerButton.style.cursor = "pointer";
-    // pauseTimerButton.style.cursor = "auto";
+    timerDisplay.style.color = "white";
   } else {
 // if the timer was already paused, when they click pause again, start the timer again
 startTimer();
@@ -52,13 +42,9 @@ function resetTimer(){
   paused = 0;
   running = 0;
   timerDisplay.innerHTML = 'Start Timer!';
-  timerDisplay.style.background = "#A90000";
-  timerDisplay.style.color = "#fff";
-  timerDisplay.style.cursor = "pointer";
-//   startTimerButton.classList.remove('lighter');
-//   pauseTimerButton.classList.remove('lighter');
-//   startTimerButton.style.cursor = "pointer";
-//   pauseTimerButton.style.cursor = "auto";
+  timerDisplay.style.background = "gray";
+  timerDisplay.style.color = "white";
+
 }
 
 function displayTime()
