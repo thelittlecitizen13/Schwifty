@@ -3,6 +3,14 @@ var emptySpot;
 var gameTime;
 var gameTimeInterval;
 
+function startNewGame()
+{
+    createTable();
+    checkTable();
+    resetTimer();
+    startTimer();
+}
+
 function createTable()
 {
     gameSize = document.getElementById("gameSize").value;
@@ -16,7 +24,6 @@ function createTable()
     }
     while(isArrayPlayable(randomNumbersArray) != true );
     generateTable(randomNumbersArray);
-    checkTable();
 }
 
 function generateRandomNumbersArray(arraySize)
@@ -95,7 +102,7 @@ function generateTable(randomNumbersArray)
     tableDiv.innerHTML = "";
     var tbl = document.createElement('table');
     tbl.setAttribute("id", "gameTable");
-    tbl.className = "h-50 w-50";
+    tbl.className = "h-100 w-100";
     tbl.setAttribute('border', '1');
     var tbdy = document.createElement('tbody');
     for (var i = 0; i < gameSize; i++) {
@@ -120,7 +127,6 @@ function generateTable(randomNumbersArray)
     tbl.appendChild(tbdy);
     tableDiv.appendChild(tbl);
 }
-
 
 function replaceCell(cellID, idNumber)
 {
@@ -187,7 +193,11 @@ function replaceValues(cell1, cell2)
 
 function checkTable()
 {
-    checkTableValues();
+    var isTableCompleted = checkTableValues();
+    if (isTableCompleted)
+    {
+        gameWon();
+    }
 }
 
 function checkTableValues()
@@ -223,13 +233,57 @@ function checkTableValues()
 
 function gameWon()
 {
+    pauseTimer();
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
 }
 
 function recordWinner()
 {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    var winnerFullName = document.getElementById("fullName").value;
+    var winnerRank = document.getElementById("rank").value;
+    var gameTime = getShowTime();
+    
+    var tableRecord = document.createElement('tr');
+    var tableDoc = document.createElement('td');
+    tableDoc.innerHTML = winnerFullName;
+    tableRecord.appendChild(tableDoc);
+    tableDoc = document.createElement('td');
+    tableDoc.innerHTML = winnerRank;
+    tableRecord.appendChild(tableDoc);
+    tableDoc = document.createElement('td');
+    tableDoc.innerHTML = gameTime;
+    tableRecord.appendChild(tableDoc);
+    tableDoc = document.createElement('td');
+    tableDoc.innerHTML = gameSize;
+    tableRecord.appendChild(tableDoc);
+    tableDoc = document.createElement('td');
+    tableDoc.innerHTML = generateDate();
+    tableRecord.appendChild(tableDoc);
+    var table = document.getElementById('winnersTableRow');
+    var tbody = table.getElementsByClassName("tablebody")[0];
+    tbody.appendChild(tableRecord);
 
+}
+
+function generateDate()
+{
+    var objToday = new Date(),
+	weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+	dayOfWeek = weekday[objToday.getDay()],
+	domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+	dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
+	months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+	curMonth = months[objToday.getMonth()],
+	curYear = objToday.getFullYear(),
+	curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+	curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+	curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+	curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+    var today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
+    return today;
 }
 
 
