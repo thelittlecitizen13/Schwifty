@@ -1,5 +1,7 @@
 var gameSize;
 var emptySpot;
+var gameTime;
+var gameTimeInterval;
 
 function createTable()
 {
@@ -217,6 +219,17 @@ function checkTableValues()
      }
      console.log(!isNotCompleted);
      return !isNotCompleted;
+}
+
+function gameWon()
+{
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+}
+
+function recordWinner()
+{
+
 }
 
 

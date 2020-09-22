@@ -19,9 +19,13 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p class="winnigPhrase">Congratulations! You won the game!</p>
-      <p class="winnigPhrase">Please fill the information below:</p>
-      
+      <p class="winningPhrase">Congratulations! You won the game!</p>
+      <p class="winningPhrase">Please fill the information below:</p>
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required><br>
+      <label for="rank">Rank:</label>
+      <input type="text" id="rank" name="rank" required><br><br>
+      <input type="submit" value="Submit" onclick="recordWinner();">
     </div>
   
   </div>
