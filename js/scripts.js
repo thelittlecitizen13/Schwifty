@@ -5,11 +5,13 @@ var gameTimeInterval;
 
 function startNewGame()
 {
+
     createTable();
     checkTable();
     resetTimer();
     startTimer();
 }
+
 
 function createTable()
 {

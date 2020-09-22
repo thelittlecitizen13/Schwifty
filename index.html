@@ -5,14 +5,17 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link rel="stylesheet" href="stopWatch.css">
+
+        <title>Schwifty</title>
     </head>
     <body>
-        <h1>Welcome to Schwifty</h1>
+        <h1 class="text-center">Schwifty</h1>
         <div> 
-            <label for="gameSize">Please enter the size of the game:</label>
+            <label for="gameSize" class="h5">Please enter the size of the game:</label>
             <input type="text" id="gameSize" name="gameSize"><br><br>
-            <input type="submit" value="Start new game" onclick="startNewGame();">
+            <input class= "btn-primary" type="submit" value="Start new game" onclick="startNewGame();">
         </div>
+        <br><br>
         
         <!-- The Modal -->
 <div id="wonModal" class="modal">
@@ -32,12 +35,13 @@
   <div class="container-fluid h-100">
       <div class="row h-75" id="gameTableRow">
         <div id="gameTableDiv" class="col-9"></div>
-        <div id="timerContainer" class= "col-3"> 
-            <div class="timer" onclick="startTimer()">Start Timer!</div>
 
-            </div>        
+        <div id="timerContainer" class= "col-3"> 
+            <div class="timer h2 text-center">Waiting for you to start a new game!</div>
+        </div>        
       </div>
       <div>
+          <br><br>
         <div class="row" id="winnersTableRow">
             <table id="winnersTable" class="table table-striped table-bordered text-center ">
                 <thead class="thead-dark">
