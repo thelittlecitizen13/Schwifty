@@ -54,8 +54,6 @@ td {
       background-position: center;
   }
 
-  .balbaEgg{
-    background-image: url(../images/balba.png);
-    background-repeat: no-repeat;
-    background-position: center;
+  body{
+    font-weight: 300;
   }
